@@ -18,9 +18,10 @@ function calcularFolga() {
 
     let diasTrabalhados = 0;
     let currentDate = dataRetorno ? dataRetorno : dataInicio;
+
     while (currentDate <= dataFolga) {
         diasTrabalhados += 1;
-        currentDate.setHours(currentDate.getHours() + 12 + 36);
+        currentDate.setHours(currentDate.getHours() + 12 + 36); // adiciona 12 horas de trabalho e 36 horas de folga
     }
 
     const resultado = document.getElementById('resultado');
