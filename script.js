@@ -10,18 +10,21 @@ document.getElementById('afastamento').addEventListener('change', function() {
 function calcularFolga() {
     const dataInicio = new Date(document.getElementById('data-inicio').value);
     const afastamento = document.getElementById('afastamento').value;
-    let dataRetorno = null;
-    if (afastamento === 's') {
-        dataRetorno = new Date(document.getElementById('data-retorno').value);
-    }
+    const dataRetorno = afastamento === 's' ? new Date(document.getElementById('data-retorno').value) : null;
     const dataFolga = new Date(document.getElementById('data-folga').value);
 
+    if (isNaN(dataInicio) || isNaN(dataFolga) || (afastamento === 's' && isNaN(dataRetorno))) {
+        alert("Por favor, insira todas as datas corretamente.");
+        return;
+    }
+
     let diasTrabalhados = 0;
-    let currentDate = dataRetorno ? dataRetorno : dataInicio;
+    let currentDate = dataRetorno || dataInicio;
 
     while (currentDate <= dataFolga) {
-        diasTrabalhados += 1;
-        currentDate.setHours(currentDate.getHours() + 12 + 36); // adiciona 12 horas de trabalho e 36 horas de folga
+        diasTrabalhados++;
+        currentDate.setHours(currentDate.getHours() + 12); // adiciona 12 horas de trabalho
+        currentDate.setDate(currentDate.getDate() + 1); // adiciona 36 horas de folga
     }
 
     const resultado = document.getElementById('resultado');
@@ -33,10 +36,11 @@ function calcularFolga() {
         while (diasTrabalhados < 14) {
             dataFolga.setDate(dataFolga.getDate() + 1);
             diasTrabalhados = 0;
-            currentDate = dataRetorno ? dataRetorno : dataInicio;
+            currentDate = dataRetorno || dataInicio;
             while (currentDate <= dataFolga) {
-                diasTrabalhados += 1;
-                currentDate.setHours(currentDate.getHours() + 12 + 36);
+                diasTrabalhados++;
+                currentDate.setHours(currentDate.getHours() + 12); // adiciona 12 horas de trabalho
+                currentDate.setDate(currentDate.getDate() + 1); // adiciona 36 horas de folga
             }
         }
 
