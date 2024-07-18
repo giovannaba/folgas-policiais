@@ -3,34 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculo de Dias Trabalhados</title>
+    <title>Cálculo de Dias Trabalhados (Escala 12x36)</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Calculo de Dias Trabalhados para Policiais Militares</h1>
-        <form id="calculo-form">
-            <label for="data-inicio">Data Inicial de Trabalho:</label>
-            <input type="date" id="data-inicio" name="data-inicio" required>
+    <h1>Cálculo de Dias Trabalhados (Escala 12x36)</h1>
 
-            <label for="afastamento">O policial teve algum afastamento?</label>
-            <select id="afastamento" name="afastamento" required>
-                <option value="n">Não</option>
-                <option value="s">Sim</option>
-            </select>
+    <form id="formulario">
+        <div class="campo">
+            <label for="dataInicio">Data Inicial de Trabalho (YYYY-MM-DD):</label>
+            <input type="text" id="dataInicio" name="dataInicio" placeholder="YYYY-MM-DD" required>
+        </div>
 
-            <div id="data-retorno-container" style="display: none;">
-                <label for="data-retorno">Data de Retorno do Afastamento:</label>
-                <input type="date" id="data-retorno" name="data-retorno">
-            </div>
+        <div class="campo">
+            <label for="afastamento">Teve Afastamento?</label>
+            <input type="radio" id="sim" name="afastamento" value="sim">
+            <label for="sim">Sim</label>
+            <input type="radio" id="nao" name="afastamento" value="nao" checked>
+            <label for="nao">Não</label>
+        </div>
 
-            <label for="data-folga">Data que o Policial Pretende Folgar:</label>
-            <input type="date" id="data-folga" name="data-folga" required>
+        <div class="campo" id="dataRetornoDiv">
+            <label for="dataRetorno">Data de Retorno do Afastamento (YYYY-MM-DD):</label>
+            <input type="text" id="dataRetorno" name="dataRetorno" placeholder="YYYY-MM-DD" disabled>
+        </div>
 
-            <button type="button" onclick="calcularFolga()">Calcular</button>
-        </form>
+        <div class="campo">
+            <label for="dataFolga">Data que Pretende Folgar (YYYY-MM-DD):</label>
+            <input type="text" id="dataFolga" name="dataFolga" placeholder="YYYY-MM-DD" required>
+        </div>
 
-        <div id="resultado"></div>
+        <button type="button" id="calcularButton">Calcular</button>
+    </form>
+
+    <div id="resultado">
+        <h2>Resultado:</h2>
+        <p id="diasTrabalhados"></p>
+        <p id="proximaFolga"></p>
     </div>
 
     <script src="script.js"></script>

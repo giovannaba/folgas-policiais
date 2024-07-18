@@ -1,50 +1,47 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: black;
-    margin: 0;
-    padding: 0;
+    font-family: sans-serif;
 }
 
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 20px auto;
 }
 
-h1 {
-    text-align: center;
-    color: #333;
+.campo {
+    display: flex;
+    margin-bottom: 10px;
 }
 
 label {
-    display: block;
-    margin-bottom: 8px;
-    color: #333;
+    margin-right: 10px;
 }
 
-input, select, button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
+input[type="text"],
+input[type="radio"] {
+    padding: 5px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
 }
 
 button {
-    background-color: #007BFF;
-    color: #fff;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
     border: none;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
-
 #resultado {
     margin-top: 20px;
-    font-size: 18px;
+    text-align: center;
+}
+
+#diasTrabalhados,
+#proximaFolga {
+    font-weight: bold;
 }
