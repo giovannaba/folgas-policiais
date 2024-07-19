@@ -37,13 +37,13 @@ window.onload = function () {
 
             let diasTrabalhados = calcularDiasFolga(dataInicio, dataFolga, dataRetorno);
 
-            if (diasTrabalhados >= 14) {
+            if (diasTrabalhados >= 15) {
                 diasTrabalhadosLabel.textContent = `O policial tem direito a folga. Dias trabalhados: ${diasTrabalhados} dias.`;
                 proximaFolgaLabel.textContent = '';
             } else {
                 diasTrabalhadosLabel.textContent = `O policial ainda não tem direito a folga. Dias trabalhados: ${diasTrabalhados} dias.`;
                 let proximaDataFolga = new Date(dataInicio);
-                while (diasTrabalhados < 14) {
+                while (diasTrabalhados < 15) {
                     proximaDataFolga.setDate(proximaDataFolga.getDate() + 1);
                     diasTrabalhados = calcularDiasFolga(dataInicio, proximaDataFolga, dataRetorno);
                 }
